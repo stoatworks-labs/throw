@@ -3,8 +3,8 @@ name: ci
 # macOS and Windows. The CMakeLists branches on APPLE and WIN32 and has no
 # Linux path at all, so ubuntu is not an option. The Windows job is schlieren's
 # (pitch's before it): a GLEW-shaped break is one macOS is structurally blind
-# to, because macOS never links GLEW. Throw has never been built on Windows;
-# this job is the first place it would be.
+# to, because macOS never links GLEW. This job is the only place Throw is
+# built on Windows.
 #
 # The macOS runner cannot create an accelerated GL context, so the harness runs
 # `twtest --offline`: every check twtest's main() marks as needing no GL, and

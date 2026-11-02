@@ -55,10 +55,14 @@ surface's exact heights or the harness's tolerances.
   surface-specific ones as dead, on purpose).
 - Render cost: `./build/twtest --bench`.
 - On the software renderer: `TWTEST_RENDERER=software ./build/twtest --flat --size 320x180`.
-- CI (`.github/workflows/ci.yml`) and release (`release.yml`) are adapted from slitscan
-  and have never run: there is no remote. If the repo is made private, delete them
-  first (private repos share one small Actions allowance). `tools/wincheck.ps1 -Params 33`
-  is the 29 controls plus the About block's text and three buttons.
+- CI (`.github/workflows/ci.yml`, public repo): macOS arm64 build, `twtest --list` and
+  `--offline`, glslc; a Windows x64 build through vcpkg's GLEW. No pixel checks: the
+  runner has no GL. If the repo is ever made private, delete the workflows first
+  (private repos share one small Actions allowance).
+- Release (`.github/workflows/release.yml`, slitscan's): a `v*` tag builds the universal
+  bundle and the Windows DLL, packages and publishes; a manual dispatch builds and
+  publishes nothing. Never run yet. `tools/wincheck.ps1 -Params 33` is the 29 controls
+  plus the About block's text and three buttons.
 
 ## Notes
 - **Metres throughout.** The wall's front plane is z = 0, the relief behind it down to
@@ -86,8 +90,8 @@ surface's exact heights or the harness's tolerances.
   replaces both.
 
 ## Not done yet
-- Never loaded into Resolume, on any platform. Never built on Windows.
-- No remote, no release, no user guide, no browser demo, no presets.
+- Never loaded into Resolume, on any platform. On Windows, built only by CI.
+- No tag, no release, no user guide, no browser demo, no presets.
 
 ## Diagnostics
 

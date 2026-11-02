@@ -45,7 +45,8 @@ raster, the file's generation). A still surface costs the projection alone.
 - **Name and id.** `SW Throw`, `TW01`, bundle `com.stoatworks.ffgl.throw`, harness
   `twtest`. A projector's throw is how far, and at what, it sends its picture. `throw` is
   a C++ keyword, so the namespace is `throwfx`. Built in `~/Projects/resolume/throw` as
-  its own repo, no remote.
+  its own repo and pushed, public, to github.com/stoatworks-labs/throw on 2026-11-02, as
+  the fleet's plugins are. No tag, no release.
 - **More surfaces than the minimum.** The list's five, plus Weatherboard (feather-edge
   boards: a lip that casts a shadow down every board) and Tiles (glazed metro tile: a
   dielectric highlight on a diffuse body, the grout without it), plus Flat (the reference
@@ -90,10 +91,11 @@ raster, the file's generation). A still surface costs the projection alone.
   files' shape, because generating them means registering the plugin in
   stoatworks-backend, which waits for Allan. 33 parameters in all; `tools/wincheck.ps1
   -Params 33` in release.yml pins it.
-- **The workflows are ported and have never run.** `.github/workflows/ci.yml` and
-  `release.yml` are slitscan's with names changed. There is no remote. If the repo is
-  created private, delete them before the first push: private repos share one small
-  Actions allowance (the house rule is no workflows on private repos).
+- **The workflows are slitscan's.** `.github/workflows/ci.yml` and `release.yml` with
+  the names changed. The repo is public, so they run on GitHub's free minutes; ci.yml's
+  first run, on the first push, is also the first Windows build. If the repo ever goes
+  private, delete them first: private repos share one small Actions allowance (the house
+  rule is no workflows on private repos). release.yml runs only on a `v*` tag or by hand.
 - **Seed** reaches every procedural surface: paper's facets, each brick's colour, tilt
   and set, the zinc's spangle, the plate's wear, the drapes' wander and weave, each
   board's and tile's tone. Changing it rebuilds the surface (a 4–35 ms frame; see the
@@ -243,8 +245,8 @@ glaze. That run exits 1 on purpose.
 
 ## Not done
 
-- **Never loaded into Resolume**, on macOS or Windows. Never built on Windows.
-- No remote, no release, no website entry, no backend registration, no user guide, no
+- **Never loaded into Resolume**, on macOS or Windows. On Windows, built only by CI.
+- No tag, no release, no website entry, no backend registration, no user guide, no
   browser demo, no OpenFX port, no presets. All wait for Allan's go-ahead.
 - Not built: depth of field and a focus control (sub-pixel at real distances, above);
   interreflection; a projector's gamut and white point; normal maps (no height, so no

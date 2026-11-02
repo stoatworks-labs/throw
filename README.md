@@ -122,8 +122,9 @@ Depth of field isn't modelled, because at real distances there's nothing to mode
 
 ## Status
 
-**v0.1.0**, local and unreleased, 2 November 2026. Measured offline on one Mac. It has
-**never been loaded into Resolume**, and never built on Windows.
+**v0.1.0**, unreleased (source only, no downloads yet), 2 November 2026. Measured offline
+on one Mac. It has **never been loaded into Resolume**, and on Windows it has only been
+built by CI.
 
 ### Measured offline, on macOS
 
@@ -183,8 +184,8 @@ automating at 60 fps. macOS figures only.
 
 It's **never been loaded into Resolume**: it has only been measured offline against the
 plugin's own class in a headless CGL context, plus an `oxbow` load. Nobody has seen it in
-Arena or Avenue, on a GPU other than this Mac's, on Windows (where it has never been
-built), or with Resolume's own clips at 4K. There's no user guide, browser demo, OpenFX
+Arena or Avenue, on a GPU other than this Mac's, on Windows (where only CI has built
+it), or with Resolume's own clips at 4K. There's no user guide, browser demo, OpenFX
 port or presets; none was needed for 0.1.0.
 
 The model is a pinhole projector and a pinhole viewer, matte bodies with a GGX highlight
@@ -199,7 +200,7 @@ standing in for its relief is a look, not a measurement. AGENTS.md lists the res
 macOS (universal: Apple Silicon and Intel):
 
 ```bash
-git clone --recurse-submodules <this repo>
+git clone --recurse-submodules https://github.com/stoatworks-labs/throw
 ```
 
 ```bash
@@ -217,8 +218,8 @@ cmake --install build
 The last one copies `Throw.bundle` into `~/Documents/Resolume Arena/Extra Effects`.
 Restart Arena and it's under Effects as **SW Throw**.
 
-Windows needs Visual Studio 2022 and vcpkg (for GLEW); see `.github/workflows/ci.yml`. It
-has never been built there.
+Windows needs Visual Studio 2022 and vcpkg (for GLEW); see `.github/workflows/ci.yml`,
+which is the only place it has been built.
 
 ## Building and testing
 
