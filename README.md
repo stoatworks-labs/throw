@@ -58,6 +58,10 @@ macOS builds are signed and notarised and open normally. The Windows builds are 
 
 <!-- downloads:end -->
 
+## Video
+
+[![Throw: your clip thrown onto brick, drapes, metal and paper, for Resolume](docs/video-thumb.png)](https://www.youtube.com/watch?v=X-_OHlWbss4)
+
 ## The one idea
 
 **A projector is a lamp with a picture in it, and you are not standing at the lens.**
