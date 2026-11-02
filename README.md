@@ -216,6 +216,17 @@ gamut or lamp colour. The surfaces' colours are chosen to look right, not measur
 metals' reflectance is computed from published optical constants. A Photo's brightness
 standing in for its relief is a look, not a measurement. AGENTS.md lists the rest.
 
+## Browser demo
+
+**<https://throw-demo.stoatworks-labs.com/>**: every surface, view and control with its own
+name, group and default, on the kit's clips or your own, and a height map or photo of yours
+as the Surface File (decoded in the page, never uploaded). The shaders are the plugin's own
+GLSL, spliced unedited (`demo/tools/check_shaders.py`, run by `tools/verify.sh`); the CPU half
+(the controls, the room in metres, the surface file) is a JavaScript port, and
+`demo/tools/crosscheck/` renders it and `twtest` from the same card: in 22 cases across every
+surface and view, no pixel is more than one level of 255 from the plugin's. It is a demo, not
+the plugin, and says what it leaves out.
+
 ## Build
 
 macOS (universal: Apple Silicon and Intel):

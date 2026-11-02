@@ -94,6 +94,14 @@ surface's exact heights or the harness's tolerances.
   gate in Arena 7.27.1 on software rendering (plugin-bench `arena/expect/throw.json`).
 - No presets, no OpenFX port.
 
+## Browser demo
+- `demo/` is <https://throw-demo.stoatworks-labs.com>; `.github/workflows/deploy.yml`
+  deploys it on a push to main (a route, not a custom domain: `wrangler.toml`).
+- After a shader edit: `python3 demo/tools/check_shaders.py --write` (verify.sh fails on drift).
+- Locally: `python3 -m http.server -d demo`, or `npx wrangler dev` for the real `_headers`.
+- Against the plugin: `python3 demo/tools/crosscheck/crosscheck.py` (needs `build-verify/twtest`,
+  Chrome and a GPU). AGENTS.md has the gaps and the last figures.
+
 ## Diagnostics
 
 `source/Diag.{h,cpp}`: log file only, no crash handler (this runs inside Resolume).

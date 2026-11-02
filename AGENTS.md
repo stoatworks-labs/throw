@@ -244,14 +244,63 @@ Profile, Pitch, Pattern, Pleats, Sag, Roughness, Surface File and File Holds as 
 they belong to surfaces the default (Brick) is not, and Roughness only acts on metal and
 glaze. That run exits 1 on purpose.
 
+## The browser demo (2026-11-02)
+
+`demo/` is <https://throw-demo.stoatworks-labs.com>, built to the fleet's `resolume-demo` kit
+rules (`~/Projects/resolume/specs/DEMO-BRIEF.md`), from slitscan's. What a reader of it must
+know:
+
+- **The shaders are the plugin's**: the five pieces plus kVersion, spliced by
+  `demo/tools/check_shaders.py --write` into `demo/shaders.js` and compared character for
+  character, with the JOIN on both sides (`Assemble( Pass )` is kVersion + kCommon + the
+  fragment, InitGL's three stages, plugin.js's copy), and every uniform the three fragments
+  declare named in plugin.js (a missed one would sit at 0). All three programs compile and
+  link in WebGL2 as spliced. `tools/verify.sh` runs the check.
+- **The CPU half is a port**: Controls.cpp, Room.h and Room.cpp in full, in double (between
+  the PORT markers in `demo/plugin.js`), and HeightFile.cpp plus the CPU half of Throw.cpp --
+  SetFloatParameter, the file's load and generation, ProcessOpenGL with the surface key,
+  buildSurface (between the FRAME markers). Change those and you change the port too. Not
+  ported: the negative-control hooks (Hooks stays 0), the log, the About block.
+- **Same formats**: the surface RGBA32F with linear filtering and the occlusion R16F
+  (EXT_color_buffer_float, or the page stops and says so). Without OES_texture_float_linear
+  a 32-bit float texture cannot be filtered, so the surface drops to RGBA16F and a line
+  under the picture says so.
+- **The Surface File is an image the visitor picks**, decoded by the browser at 8 bits and
+  widened ×257 as stb_image widens an 8-bit file, so an 8-bit PNG is exact; a 16-bit map
+  loses its low bits. Picking one also sets Surface to File. Nothing is uploaded.
+- **Seed and Pleats** (FF_TYPE_INTEGER) are dropdowns of every value; the kit has no
+  integer control. The Presets menu is the page's.
+- **The page's own `differences` list says all of this on the page.** Keep it true.
+
+How it was verified, and how to again (it needs this Mac's GPU and Chrome, so verify.sh does
+not run it):
+
+- `demo/tools/crosscheck/crosscheck.py [--size 1280x720]` (after verify.sh, or
+  `cmake --build build-verify --target twtest`): the harness's look card, taken from
+  `twtest --film 1` at Mix 0, fed to `twtest --pipe` and to the page through
+  `window.throwDemo.renderCase` (a fresh instance) in headless Chrome, one frame compared;
+  first the page's table of controls against `twtest --list`. 22 cases: the defaults, every
+  surface, all four bonds, both corrugation profiles, two plate patterns, the drapes from
+  the left with Sag, a dim room and a bright one, the pointed projector on brick and on a
+  flat wall, Mix 0.6, all five diagnostic views, File with no file, and an 8-bit height map
+  and an 8-bit photo (tiled) the script writes. A case passes when no pixel is more than one
+  level of 255 apart and 99% are identical. 2 November 2026, M4 Max, Chrome through ANGLE on
+  Metal, surface in RGBA32F: all 29 controls agree; every case within one level everywhere
+  at 640 × 360 and 1280 × 720, 99.17% to 100% identical. Negative controls, each caught:
+  Throw one slider step (0.001) off is 98.8% identical; Viewer X, Depth and Sag one step
+  off are up to 140 levels out at an edge; Lumens one step off is 93.0% identical; the
+  paper's Seed one off, 5%. The RGBA16F fallback and every other GPU and browser are not
+  compared.
+
 ## Not done
 
 - **Never loaded into Resolume on macOS.** On Windows the release workflow's own build
   passed plugin-bench's Arena gate twice in Arena 7.27.1 on software rendering (10 passed:
   35 controls as declared, 28 of 29 live against a still, Surface File inconclusive as a
   file control always is there, log clean). Nothing in Resolume on a GPU.
-- No OpenFX port or presets. Registered in stoatworks-backend and the website's
-  projects.json on 2026-11-02; the user guide is `docs/USER-GUIDE.md`.
+- No OpenFX port or presets (the browser demo's menu is the page's own). Registered in
+  stoatworks-backend and the website's projects.json on 2026-11-02; the user guide is
+  `docs/USER-GUIDE.md`.
 - Not built: depth of field and a focus control (sub-pixel at real distances, above);
   interreflection; a projector's gamut and white point; normal maps (no height, so no
   parallax and no shadow); more than one projector; a moving viewer driven by the beat.
