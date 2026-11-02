@@ -27,6 +27,35 @@ There's a [user guide](https://stoatworks-labs.com/software/throw/guide/), also 
 [docs/USER-GUIDE.md](docs/USER-GUIDE.md).
 
 <!-- downloads:start -->
+
+## Download
+
+**[v0.1.0](https://github.com/stoatworks-labs/throw/releases/tag/v0.1.0)** — prebuilt for macOS and Windows. Pick your platform:
+
+<details>
+<summary><b>macOS</b> — Universal (Apple Silicon + Intel)</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| Universal (Apple Silicon + Intel) · .dmg disk image | [`throw-0.1.0-macos-universal.dmg`](https://github.com/stoatworks-labs/throw/releases/download/v0.1.0/throw-0.1.0-macos-universal.dmg) | 337 KB |
+| Universal (Apple Silicon + Intel) · .zip archive | [`throw-macos-universal.zip`](https://github.com/stoatworks-labs/throw/releases/latest/download/throw-macos-universal.zip) | 288 KB |
+
+</details>
+
+<details>
+<summary><b>Windows</b> — x64</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| x64 · .exe installer | [`throw-0.1.0-windows-x86_64-setup.exe`](https://github.com/stoatworks-labs/throw/releases/download/v0.1.0/throw-0.1.0-windows-x86_64-setup.exe) | 260 KB |
+| x64 · .zip archive | [`throw-windows-x86_64.zip`](https://github.com/stoatworks-labs/throw/releases/latest/download/throw-windows-x86_64.zip) | 155 KB |
+
+</details>
+
+All builds, checksums and release notes: [github.com/stoatworks-labs/throw/releases](https://github.com/stoatworks-labs/throw/releases).
+
+macOS builds are signed and notarised and open normally. The Windows builds are unsigned, so SmartScreen warns once.
+
 <!-- downloads:end -->
 
 ## The one idea
