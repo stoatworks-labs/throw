@@ -1015,6 +1015,7 @@ const mounted = mountDemo({
   tagline:
     'A projector throwing the clip onto a real surface: crumpled paper, a brick wall, corrugated sheet, tread plate, pleated drapes, weatherboard, glazed tiles, or a height map of your own. The light leaves a lens at a real place in the room and you stand somewhere else, so the picture is shaded by angle and distance, coloured by the wall, shadowed by the relief, slides over it as you move, flares off metal and never reaches black.',
   repo: 'https://github.com/stoatworks-labs/throw',
+  page: 'https://stoatworks-labs.com/software/throw/',
 
   blurb:
     'It is Throw’s own GLSL, ported from the repository to WebGL2 unedited, fed by a JavaScript port of the plugin’s CPU half (every control’s mapping and the room worked out in metres, in double), running on generated clips or your own in this page — no install.',
