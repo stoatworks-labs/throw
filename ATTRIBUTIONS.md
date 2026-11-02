@@ -1,12 +1,10 @@
 # Attributions
 
-Throw is built on other people's work. This file lists what that work is, who did it,
-and what it is doing here.
+Throw is built on other people's work. This file lists what that work is, who did
+it, and what it is doing here.
 
-In the released plugins this file is generated from the master lists in the
-`stoatworks-backend` repo by `scripts/sync-attributions.py`. Throw has not been
-registered there yet (that waits for a release), so for now it is written by hand in the
-same shape. Registering it replaces this file; carry anything new across first.
+It is generated — the master lists live in the `stoatworks-backend` repo and are
+pushed out by `scripts/sync-attributions.py`. Edit it there, not here.
 
 ## Code we derived from other people's work
 
@@ -30,12 +28,11 @@ GGX with height-correlated Smith visibility and Schlick's Fresnel, as repousse l
 
 ### The file parameter and 16-bit height maps — Stoatworks knockout and isohypse
 
-<https://github.com/stoatworks-labs/knockout>  
 <https://github.com/stoatworks-labs/isohypse>  
 Licence: MIT  
 Copyright: Stoatworks Labs
 
-How a file path arrives as an FFGL file parameter and is held under a lock until the GL thread reads it (knockout), and reading PNGs through stb_image at 16 bits a channel so a 16-bit height map keeps its precision (isohypse). source/HeightFile.{h,cpp}.
+How a file path arrives as an FFGL file parameter and is held under a lock until the GL thread reads it (knockout, https://github.com/stoatworks-labs/knockout), and reading PNGs through stb_image at 16 bits a channel so a 16-bit height map keeps its precision (isohypse). source/HeightFile.{h,cpp}.
 
 ## Third-party code this project uses
 
@@ -47,7 +44,7 @@ Libraries, SDKs and frameworks the project is built on or bundles.
 Licence: BSD-3-Clause  
 Copyright: FreeFrame
 
-Vendored as a git submodule at external/ffgl.
+Vendored as a git submodule at external/ffgl (third_party/ffgl in oxbow).
 
 The plugin ABI itself. An FFGL effect or source is defined by this SDK's headers — there is no other way to be loadable by Resolume Arena and Avenue.
 
@@ -61,14 +58,6 @@ Arrives inside the FFGL submodule at external/ffgl/deps/glew-2.1.0. Not fetched 
 
 Resolves OpenGL entry points on Windows, where the system headers stop at OpenGL 1.1.
 
-### stb_image — Sean Barrett
-
-<https://github.com/nothings/stb>  
-Licence: public domain (Unlicense) or MIT, at your choice  
-Copyright: Sean Barrett and contributors
-
-v2.30, vendored at external/stb/stb_image.h. Reads the Surface File: PNG at 8 or 16 bits, JPEG, and the other formats it knows.
-
 ### libpng
 
 <http://www.libpng.org/pub/png/libpng.html>  
@@ -79,21 +68,31 @@ Arrives inside the FFGL submodule, under the SDK's CustomThumbnail sample.
 
 Part of the upstream SDK tree rather than something these plugins call directly — listed because it is present in the checkout.
 
-## Data
+### stb_image
 
-### Optical constants of zinc and aluminium — refractiveindex.info
+<https://github.com/nothings/stb>  
+Licence: MIT or Public Domain (dual, at your option)  
+Copyright: Sean Barrett
+
+Single-header decoder vendored under external/stb/ and compiled into one translation unit.
+
+Decodes PNG, JPEG and GIF. A sprite-sheet player has to open whatever the operator exported.
+
+## Data this project ships
+
+Measurements made by other people and carried inside the product. Each is credited the way its publisher asks, and where a licence requires its attribution to travel with the data, that text is reproduced here.
+
+### Optical constants of zinc and aluminium — refractiveindex.info, M. N. Polyanskiy
 
 <https://refractiveindex.info>  
-Licence: CC0 1.0  
-Copyright: Mikhail N. Polyanskiy (database); the measurements are the authors' below
+Licence: CC0 1.0
 
-tools/f0-data/Zn-Werner.yml: W. S. M. Werner, K. Glantschnig and C. Ambrosch-Draxl, "Optical constants and inelastic electron-scattering data for 17 elemental metals", J. Phys. Chem. Ref. Data 38, 1013 (2009). tools/f0-data/Al-Rakic.yml: A. D. Rakić, "Algorithm for the determination of intrinsic optical constants of metal films: application to aluminum", Appl. Opt. 34, 4755 (1995). tools/f0.py turns them into the galvanised sheet's and the tread plate's F0 in source/Room.h.
+tools/f0-data/Zn-Werner.yml: Werner, Glantschnig and Ambrosch-Draxl, "Optical constants and inelastic electron-scattering data for 17 elemental metals", J. Phys. Chem. Ref. Data 38, 1013 (2009). tools/f0-data/Al-Rakic.yml: Rakić, "Algorithm for the determination of intrinsic optical constants of metal films: application to aluminum", Appl. Opt. 34, 4755 (1995). tools/f0.py turns them into the galvanised sheet's and the tread plate's F0 in source/Room.h.
 
-### CIE 1931 colour-matching functions and illuminant D65 — CVRL
+### CIE 1931 colour-matching functions and illuminant D65 — the CIE, tabulated by CVRL (UCL)
 
 <http://cvrl.org>  
-Licence: the CIE's standard tables, freely published by CVRL  
-Copyright: CIE; tabulated by the Colour & Vision Research Laboratory, UCL
+Licence: The CIE's standard tables, freely published by CVRL
 
 tools/f0-data/ciexyz31.csv and d65.csv: what tools/f0.py integrates a metal's reflectance spectrum against.
 

@@ -22,6 +22,12 @@ height map or photo of your own.
 <sub>Rendered by `twtest`, the offline harness, not captured from Resolume. Resolume's
 bundled `IntoTheGlow_02`, 1.67 s in, on Drapes at the defaults.</sub>
 
+There's a [user guide](https://stoatworks-labs.com/software/throw/guide/), also as
+[docs/USER-GUIDE.md](docs/USER-GUIDE.md).
+
+<!-- downloads:start -->
+<!-- downloads:end -->
+
 ## The one idea
 
 **A projector is a lamp with a picture in it, and you are not standing at the lens.**
@@ -147,7 +153,7 @@ universal Release build. It runs every picture check at **two rasters**, 1280×7
 | `--file` | 16-bit and 8-bit height maps come back within **9e-9 m**, a photo's albedo within 2.9e-8; a missing and a broken file are both Flat; Scale 0.5 tiles the map mirrored |
 | `--dirty` | 17 surface controls changed on a running instance: each frame is a fresh instance's **bit for bit**; projector, viewer, room and output changes rebuild the surface 0 times |
 | `--resize`, `--state` | a resize gives a fresh instance's frame bit for bit; the host's GL state comes back on all nine surfaces |
-| `--units`, `--cues`, `--names` | 44 stated values and defaults, the room's sums and the pointed projector's basis, 0 wrong; 33 parameters, none over 16 bytes, no clashes |
+| `--units`, `--cues`, `--names` | 44 stated values and defaults, the room's sums and the pointed projector's basis, 0 wrong; 34 parameters, none over 16 bytes, no clashes |
 | `--negative` | **18** deliberately wrong models, **18** caught |
 | mutation | **23** one-character mutants of the shipped GLSL and C++, **23** caught |
 | `tools/sweep.py` | all **29** controls measurably change the picture |
@@ -185,8 +191,8 @@ automating at 60 fps. macOS figures only.
 It's **never been loaded into Resolume**: it has only been measured offline against the
 plugin's own class in a headless CGL context, plus an `oxbow` load. Nobody has seen it in
 Arena or Avenue, on a GPU other than this Mac's, on Windows (where only CI has built
-it), or with Resolume's own clips at 4K. There's no user guide, browser demo, OpenFX
-port or presets; none was needed for 0.1.0.
+it), or with Resolume's own clips at 4K. There's a [user guide](https://stoatworks-labs.com/software/throw/guide/),
+but no browser demo, OpenFX port or presets yet.
 
 The model is a pinhole projector and a pinhole viewer, matte bodies with a GGX highlight
 on metal and glaze, and the room's light uniform and white. There's no depth of field

@@ -85,12 +85,13 @@ raster, the file's generation). A still surface costs the projection alone.
   height, stretched to the picture's own range. Neither is a measurement: a photo's
   darks are not its recesses, and the README says so. Decoded with stb_image at 16 bits a
   channel on the GL thread, once per file; a missing or broken file is Flat, logged.
-- **The About block** has three buttons (Project page, Source on GitHub, Support the
-  work), not the fleet's four: there is no user guide, so `guide` is "" in
-  `StoatworksAbout.h`. That file and `ATTRIBUTIONS.md` are hand-written in the generated
-  files' shape, because generating them means registering the plugin in
-  stoatworks-backend, which waits for Allan. 33 parameters in all; `tools/wincheck.ps1
-  -Params 33` in release.yml pins it.
+- **The About block** has the fleet's four buttons (User guide, Project page, Source on
+  GitHub, Support the work). `source/StoatworksAbout.h` and `ATTRIBUTIONS.md` are
+  generated: the plugin is registered in stoatworks-backend (`sync-about.py` TARGETS,
+  `attributions/` names, visibility and derived) and the website's projects.json, and
+  `sync-about.py --only throw --apply` and `sync-attributions.py --only throw` write them.
+  Edit the masters, not the files. 34 parameters in all; `tools/wincheck.ps1 -Params 34`
+  in release.yml pins it.
 - **The workflows are slitscan's.** `.github/workflows/ci.yml` and `release.yml` with
   the names changed. The repo is public, so they run on GitHub's free minutes; ci.yml's
   first run, on the first push, is also the first Windows build. If the repo ever goes
@@ -246,8 +247,9 @@ glaze. That run exits 1 on purpose.
 ## Not done
 
 - **Never loaded into Resolume**, on macOS or Windows. On Windows, built only by CI.
-- No tag, no release, no website entry, no backend registration, no user guide, no
-  browser demo, no OpenFX port, no presets. All wait for Allan's go-ahead.
+- No tag and no release yet; no browser demo, OpenFX port or presets. Registered in
+  stoatworks-backend and the website's projects.json on 2026-11-02; the user guide is
+  `docs/USER-GUIDE.md`.
 - Not built: depth of field and a focus control (sub-pixel at real distances, above);
   interreflection; a projector's gamut and white point; normal maps (no height, so no
   parallax and no shadow); more than one projector; a moving viewer driven by the beat.
