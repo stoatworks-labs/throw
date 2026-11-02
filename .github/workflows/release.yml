@@ -65,8 +65,8 @@ jobs:
         run: cmake --build build --config Release --parallel
 
       # The shipped DLL, loaded as a host loads it: see tools/wincheck.ps1.
-      # -Params is the control table plus the About block (its text and three
-      # buttons: no user guide yet); it changes whenever either does.
+      # -Params is the control table plus the About block (its text and four
+      # buttons); it changes whenever either does.
       - name: Check the DLL (Windows)
         if: runner.os == 'Windows'
         run: |
