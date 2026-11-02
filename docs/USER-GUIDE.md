@@ -31,8 +31,12 @@ IntoTheGlow_02, 1.67 s in, on Drapes with everything else at the defaults, at 12
 > It's **never been loaded into Resolume on macOS**. The one host it has run in on a Mac is the
 > fleet's own test host, `oxbow`, for 120 frames, so on a Mac nobody has seen its controls in
 > Arena's inspector or what Resolume's own clips at 4K do to the frame rate.
-> On **Windows** it has been built by CI (Visual Studio 2022, x64) and not yet loaded into
-> Resolume.
+> On **Windows** it has been in Resolume. The fleet's Arena gate ran this release's own Windows
+> build in Resolume Arena 7.27.1 on software rendering (no GPU), twice: it loads, registers as
+> `TW01`, an effect, and all 35 controls (Arena's Opacity and the plugin's 34) match their names,
+> order, types, ranges and defaults. It renders, 28 of the 29 controls visibly change the picture
+> (the 29th, Surface File, took a height map that File Holds then changed), and Arena's log stays
+> clean. Software rendering says nothing about speed on a GPU.
 > Try it on a spare layer before you put it in a show.
 >
 > This codebase was created with AI assistance, directed and reviewed by a human author.
@@ -355,8 +359,8 @@ file a PNG, JPEG, TGA or BMP.
 
 ## Known limits
 
-- **Never loaded into Resolume on macOS.** How the 29 controls in twelve groups read in Arena's
-  inspector on a Mac is untested.
+- **Never loaded into Resolume on macOS.** On Windows, Arena lists all 29 controls as declared,
+  but only on software rendering: nobody has watched it in Resolume on a GPU.
 - **The inspector shows slider positions**, not metres, lumens or lux. This guide gives the ranges,
   and where the defaults sit.
 - **A pinhole projector and a pinhole viewer.** No depth of field: at real distances there's

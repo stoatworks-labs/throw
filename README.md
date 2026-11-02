@@ -9,8 +9,9 @@
 > 0.47 of its bound); a recess shows the picture where the parallax formula puts it,
 > to 0.0007 px; a step's shadow is the closed-form length to within a pixel; the
 > lens's highlight on zinc sits at the mirror point. 18 negative controls and
-> 23 one-character mutants prove the checks can fail. It has **never been loaded into
-> Resolume**, on any platform. The full rundown is under [Status](#status).
+> 23 one-character mutants prove the checks can fail. Its Windows build has run in Resolume
+> Arena on software rendering; it has **never been loaded into Resolume on macOS**. The full
+> rundown is under [Status](#status).
 
 A projector throwing your clip onto a real surface, as an FFGL effect for
 [Resolume](https://resolume.com) Arena and Avenue: crumpled paper, a brick wall,
@@ -128,9 +129,9 @@ Depth of field isn't modelled, because at real distances there's nothing to mode
 
 ## Status
 
-**v0.1.0**, unreleased (source only, no downloads yet), 2 November 2026. Measured offline
-on one Mac. It has **never been loaded into Resolume**, and on Windows it has only been
-built by CI.
+**v0.1.0**, 2 November 2026, the first release. Measured offline on one Mac, and its
+Windows build run in Resolume Arena by the fleet's Arena gate. It has **never been loaded
+into Resolume on macOS**.
 
 ### Measured offline, on macOS
 
@@ -172,6 +173,19 @@ doesn't repeat its own frames: the same input twice changes tens of thousands of
 in their last bits (up to 7e-5), so the frame-against-frame checks allow 1e-4 there and
 report what they found.
 
+### In Resolume, on Windows
+
+The fleet's Arena gate ran the release workflow's own Windows build in Resolume Arena
+7.27.1 on win-lab (Mesa llvmpipe, software rendering, no GPU), twice, with the same
+result: the DLL loads, registers as `SW Throw` / `TW01`, an effect, and appears in
+Arena's list; all 35 controls (Arena's Opacity and the plugin's 34) match their names,
+order, types, ranges and defaults; it renders; and Arena's log stays clean: 10 passed,
+0 failed, 0 skipped. Against a still, 28 of the 29 controls changed the picture, the
+surface-specific ones under their own surface. Surface File is inconclusive, as a file
+control always is there, but it took the gate's height map and File Holds then changed
+the picture. Mesa compiled the shaders, so they are not only Apple's dialect. It says
+nothing about speed on a GPU.
+
 ### Cost
 
 Render cost, GPU time by `GL_TIME_ELAPSED`, median of 60 frames after 30 of warm-up, on
@@ -188,11 +202,12 @@ automating at 60 fps. macOS figures only.
 
 ### Not established
 
-It's **never been loaded into Resolume**: it has only been measured offline against the
-plugin's own class in a headless CGL context, plus an `oxbow` load. Nobody has seen it in
-Arena or Avenue, on a GPU other than this Mac's, on Windows (where only CI has built
-it), or with Resolume's own clips at 4K. There's a [user guide](https://stoatworks-labs.com/software/throw/guide/),
-but no browser demo, OpenFX port or presets yet.
+It's **never been loaded into Resolume on macOS**: there it has only been measured
+offline against the plugin's own class in a headless CGL context, plus an `oxbow` load.
+On Windows it has run in Arena only on software rendering. Nobody has run it on a GPU
+other than this Mac's, or with Resolume's own clips at 4K. There's a
+[user guide](https://stoatworks-labs.com/software/throw/guide/), but no OpenFX port or
+presets yet.
 
 The model is a pinhole projector and a pinhole viewer, matte bodies with a GGX highlight
 on metal and glaze, and the room's light uniform and white. There's no depth of field

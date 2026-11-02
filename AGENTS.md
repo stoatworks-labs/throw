@@ -46,7 +46,7 @@ raster, the file's generation). A still surface costs the projection alone.
   `twtest`. A projector's throw is how far, and at what, it sends its picture. `throw` is
   a C++ keyword, so the namespace is `throwfx`. Built in `~/Projects/resolume/throw` as
   its own repo and pushed, public, to github.com/stoatworks-labs/throw on 2026-11-02, as
-  the fleet's plugins are. No tag, no release.
+  the fleet's plugins are. Released as v0.1.0 the same day, on Allan's go-ahead.
 - **More surfaces than the minimum.** The list's five, plus Weatherboard (feather-edge
   boards: a lip that casts a shadow down every board) and Tiles (glazed metro tile: a
   dielectric highlight on a diffuse body, the grout without it), plus Flat (the reference
@@ -246,10 +246,12 @@ glaze. That run exits 1 on purpose.
 
 ## Not done
 
-- **Never loaded into Resolume**, on macOS or Windows. On Windows, built only by CI.
-- No tag and no release yet; no browser demo, OpenFX port or presets. Registered in
-  stoatworks-backend and the website's projects.json on 2026-11-02; the user guide is
-  `docs/USER-GUIDE.md`.
+- **Never loaded into Resolume on macOS.** On Windows the release workflow's own build
+  passed plugin-bench's Arena gate twice in Arena 7.27.1 on software rendering (10 passed:
+  35 controls as declared, 28 of 29 live against a still, Surface File inconclusive as a
+  file control always is there, log clean). Nothing in Resolume on a GPU.
+- No OpenFX port or presets. Registered in stoatworks-backend and the website's
+  projects.json on 2026-11-02; the user guide is `docs/USER-GUIDE.md`.
 - Not built: depth of field and a focus control (sub-pixel at real distances, above);
   interreflection; a projector's gamut and white point; normal maps (no height, so no
   parallax and no shadow); more than one projector; a moving viewer driven by the beat.

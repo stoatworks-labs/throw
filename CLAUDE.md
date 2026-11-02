@@ -90,8 +90,9 @@ surface's exact heights or the harness's tolerances.
   backend's attribution masters. Edit those, never the files here.
 
 ## Not done yet
-- Never loaded into Resolume, on any platform. On Windows, built only by CI.
-- No tag, no release, no browser demo, no presets yet.
+- Never loaded into Resolume on macOS. On Windows the v0.1.0 build passed the fleet's Arena
+  gate in Arena 7.27.1 on software rendering (plugin-bench `arena/expect/throw.json`).
+- No presets, no OpenFX port.
 
 ## Diagnostics
 
